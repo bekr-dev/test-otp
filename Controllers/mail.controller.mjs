@@ -12,7 +12,7 @@ export const send = async (request, response) => {
             status: false,
             message: "Enter a valid email!"
         })
-        const res = await sendOTP(email)
+        const res = await sendOTP(email,"رمز التحقق الخاص بك - Verification Code")
         return response.status(200).send(res)
     } catch (err) {
         console.error("خطأ في السيرفر الداخلي:", err); 
