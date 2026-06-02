@@ -1,18 +1,27 @@
 import { Mail } from "../Model/mail.schema.mjs"
-import { mailRegex, sendOTP } from "../Utils/mail.mjs"
+import { mailRegex,codeRegex, sendOTP } from "../Utils/mail.mjs"
 
 export const send = async (request, response) => {
     try {
-        const { email } = request.query
+        const { email, code } = request.query
+        if (!code) return response.status(400).send({
+            status: false,
+            message: "Code is required!"
+        })
         if (!email) return response.status(400).send({
             status: false,
             message: "Email is required!"
         })
+        
         if (!mailRegex.test(email)) return response.status(400).send({
             status: false,
             message: "Enter a valid email!"
         })
-        const res = await sendOTP(email,"رمز التحقق الخاص بك - Verification Code")
+        if (!codeRegex.test(code)) return response.status(400).send({
+            status: false,
+            message: "Enter a valid code !"
+        })
+        const res = await sendOTP(email,code,"رمز التحقق الخاص بك - Verification Code")
         return response.status(200).send(res)
     } catch (err) {
         console.error("خطأ في السيرفر الداخلي:", err); 
