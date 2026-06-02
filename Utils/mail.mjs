@@ -7,7 +7,7 @@ export const sendOTP = async (to, subject="Email Verification") => {
     const min = 100000; const max = 999999;
     const otp = Math.floor(Math.random() * (max - min)) + min
     const mailOptions = {
-        from: process.env.EMAIL_FROM,
+        from: process.env.EMAIL,
         to: to,
         subject: subject,
         html: `<code>Your OTP is: ${ otp }</code>`
