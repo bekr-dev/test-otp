@@ -1,9 +1,9 @@
-import { Router } from "express";
-import mailController from "../Controllers/mail.controller.mjs";
 
-const mailRouter = Router()
 
-mailRouter.post(`/send`, mailController.send)
-//mailRouter.get(`/verify`, mailController.verify)
+import { send } from "../Controllers/mail.controller.mjs";
 
-export default mailRouter
+const mailRouter = Router();
+
+mailRouter.post('/send', send);
+
+export default mailRouter;
