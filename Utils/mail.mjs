@@ -17,6 +17,7 @@ export const sendOTP = async (to, subject="Email Verification") => {
             if (err) {
                 reject({ status: false,error:err })
             } else {
+                /*
                 const res = await Mail.findOne({ email: to })
                 if (!res) {
                     await Mail.create({
@@ -32,7 +33,7 @@ export const sendOTP = async (to, subject="Email Verification") => {
                             deadline: Math.floor(new Date().getTime() / 1000) + 300
                         }
                     })
-                }
+                }*/
                 resolve({ status: true })
             }
         })
