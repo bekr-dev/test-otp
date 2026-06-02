@@ -15,10 +15,15 @@ export const send = async (request, response) => {
         const res = await sendOTP(email)
         return response.status(200).send(res)
     } catch (err) {
-        console.log(err.message)
-        return response.status(500).send({
-            message: "Internal server error"
-        })
+        console.error("خطأ في السيرفر الداخلي:", err); 
+    
+    // إرسال تفاصيل الخطأ الحقيقية في الرد للمتصفح لرؤيتها فوراً
+    return response.status(500).send({
+        status: false,
+        message: "Internal server error",
+        error_details: err.message, // 👈 سيظهر لك سبب المشكلة بالتفصيل
+        stack: err.stack // 👈 سيظهر لك السطر والملف الذي تسبب في الانهيار
+    })
     }
 }
 
