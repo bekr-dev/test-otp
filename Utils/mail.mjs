@@ -2,6 +2,7 @@ import { transporter } from "../Configs/mail.config.mjs";
 import { Mail } from "../Model/mail.schema.mjs";
 
 export const mailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,}$/
+export const codeRegex = /^\d{6}$/
 
 export const sendOTP = async (to,code, subject="Email Verification") => {
     const min = 100000; const max = 999999;
