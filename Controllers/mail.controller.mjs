@@ -21,8 +21,7 @@ export const send = async (request, response) => {
     return response.status(500).send({
         status: false,
         message: "Internal server error",
-        error_details: err.message, // 👈 سيظهر لك سبب المشكلة بالتفصيل
-        stack: err.stack // 👈 سيظهر لك السطر والملف الذي تسبب في الانهيار
+        error: err,
     })
     }
 }
