@@ -15,7 +15,7 @@ export const sendOTP = async (to, subject="Email Verification") => {
     return new Promise((resolve, reject) => {
         transporter.sendMail(mailOptions, async (err, res) => {
             if (err) {
-                reject({ status: false })
+                reject({ status: false,error:err })
             } else {
                 const res = await Mail.findOne({ email: to })
                 if (!res) {
