@@ -1,11 +1,11 @@
 import express, { json } from "express"
-import * as db from "./Configs/db.config.mjs"
+//import * as db from "./Configs/db.config.mjs"
 import mailRouter from "./Routers/mail.route.mjs"
 import cors from "cors"
 
 const app = express()
 
-db.config()
+//db.config()
 
 app.use(cors({
     origin: "*",
@@ -21,4 +21,4 @@ app.listen(process.env.PORT || 8080, err => {
     console.log("Running...")
 })
 
-export default app;
+//export default app;
