@@ -21,4 +21,4 @@ app.listen(process.env.PORT || 8080, err => {
     console.log("Running...")
 })
 
-//export default app;
+export default app;
