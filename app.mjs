@@ -184,12 +184,17 @@ async function genererReponseLocale(langueDetectee, scriptUtilise, texteOriginal
 // API ROUTE: POST /api/analyze
 // ==========================================
 app.post('/api/analyze', async (req, res) => {
-    const { userText, llamaModel, deepseekModel } = req.body;
+const { 
+    userText, 
+    llamaModel = "google/gemini-2.5-flash-lite", // ضع هنا المودل الافتراضي الذي تريده
+    deepseekModel = "openrouter/owl-alpha"       // ضع هنا المودل الافتراضي الذي تريده
+} = req.body || {};
 
-    if (!userText || !llamaModel || !deepseekModel) {
-        return res.status(400).json({ error: "Missing required fields: userText, llamaModel, deepseekModel" });
-    }
+if (!userText) {
+    return res.status(400).json({ error: "Missing required field: userText" });
+}
 
+    
     console.log('Début de l\'analyse pour:', userText);
 
     // Étape 1
