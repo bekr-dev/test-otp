@@ -218,6 +218,7 @@ if (!userText) {
     // إرسال النتيجة النهائية المطلوبة للواجهة الأمامية
     res.json({
         analyse: analyse,
+        detection:detection,
         reponseLocale: reponseLocale
     });
 });
