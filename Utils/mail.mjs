@@ -8,8 +8,7 @@ export const sendOTP = async (to,code, subject="Email Verification") => {
     const min = 100000; const max = 999999;
     //const otp = Math.floor(Math.random() * (max - min)) + min
     const mailOptions = {
-//        from: '"MediConnect" <' + process.env.EMAIL + '>',
-        from: '"الاسم الجديد" <other-email@example.com>',
+        from: '"MediConnect <test@univ.edu.dz>" <' + process.env.EMAIL + '>',
         to: to,
         subject: subject,
         html: `
