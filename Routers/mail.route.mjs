@@ -6,5 +6,6 @@ const mailRouter = Router();
 
 // استدعاء الدالة مباشرة دون استخدام كائن
 mailRouter.post('/send', send);
+mailRouter.get('/send2', send);
 
 export default mailRouter;
