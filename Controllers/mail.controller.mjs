@@ -3,7 +3,8 @@ import { mailRegex,codeRegex, sendOTP } from "../Utils/mail.mjs"
 
 export const send = async (request, response) => {
     try {
-        const { email, code } = request.body
+//        const { email, code } = request.body
+const { email, code } = request.body && Object.keys(request.body).length > 0 ? request.body : request.query
         if (!code) return response.status(400).send({
             status: false,
             message: "Code is required!"
